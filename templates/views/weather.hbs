@@ -52,6 +52,57 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script>
+        const date1=document.getElementById('today_date');
+        const day1=document.getElementById('day');
+        function myFunction() {
+        var d = new Date();
+        var n = d.getDate();
+        return n;
+        };
+
+        const getCurrentDay = () => {
+        var weekday = new Array(7);
+        weekday[0] = "Sunday";
+        weekday[1] = "Monday";
+        weekday[2] = "Tue";
+        weekday[3] = "Wed";
+        weekday[4] = "Thursday";
+        weekday[5] = "Friday";
+        weekday[6] = "Saturday";
+
+        let currentTime = new Date();
+        let day = weekday[currentTime.getDay()];
+        return day;
+         };
+
+            const getCurrentTime = () => {
+        var months = [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "June",
+          "July",
+          "Aug",
+          "Sept",
+          "Oct",
+          "Nov",
+          "Dec",
+        ];
+
+        var now = new Date();
+        var month = months[now.getMonth()];
+        var date = now.getDate();
+         return `${month} ${date} `;
+            };
+
+
+
+                date1.innerHTML=getCurrentTime();
+                day1.innerHTML=getCurrentDay();
+    </script>
 </body>
 
 </html>
