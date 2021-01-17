@@ -18,7 +18,7 @@
 
                     <form class="temp_form ">
 
-                        <input type="text" id="cityName" placeholder="Enter you city name.." autocomplete="off">
+                        <input type="text" id="cityName" placeholder="Enter your city name.." autocomplete="off">
                         <br>
                         <input type="submit" value="search" id="submitBtn">
                         <p id="temp_err"></p>
@@ -28,6 +28,7 @@
                         <div class="top_layer">
                             <p id="day">Tuesday</p>
                             <p id="today_date">13 oct</p>
+                            <p id="time007">06:16pm</p>
                         </div>
                         <div class="main_layer ">
                             <p id="city_name">Get output here </p>
@@ -55,6 +56,7 @@
     <script>
         const date1=document.getElementById('today_date');
         const day1=document.getElementById('day');
+        const time007=document.getElementById('time007');
         function myFunction() {
         var d = new Date();
         var n = d.getDate();
@@ -77,29 +79,48 @@
          };
 
             const getCurrentTime = () => {
-        var months = [
-          "Jan",
-          "Feb",
-          "Mar",
-          "Apr",
-          "May",
-          "June",
-          "July",
-          "Aug",
-          "Sept",
-          "Oct",
-          "Nov",
-          "Dec",
-        ];
+                var months = [
+                "Jan",
+                "Feb",
+                "Mar",
+                "Apr",
+                "May",
+                "June",
+                "July",
+                "Aug",
+                "Sept",
+                "Oct",
+                "Nov",
+                "Dec",
+                ];
 
-        var now = new Date();
-        var month = months[now.getMonth()];
-        var date = now.getDate();
-         return `${month} ${date} `;
-            };
+                    var now = new Date();
+                    var month = months[now.getMonth()];
+                    var date = now.getDate();
+                    return `${month} ${date} `;
+                };
+                    timer();
 
-
-
+                    function timer(){
+                    var currentTime = new Date()
+                    var hours = currentTime.getHours()
+                    var minutes = currentTime.getMinutes()
+                    if (minutes < 10){
+                        minutes = "0" + minutes
+                    }
+                    if(hours>12){
+                        hours-=12;
+                    };
+                    var t_str = hours + ":" + minutes + " ";
+                    if(hours > 11){
+                        t_str += "AM";
+                    } else {
+                    t_str += "PM";
+                    }
+                     
+                    time007.innerHTML = t_str;
+                    setTimeout(timer,1000);
+                    };
                 date1.innerHTML=getCurrentTime();
                 day1.innerHTML=getCurrentDay();
     </script>
